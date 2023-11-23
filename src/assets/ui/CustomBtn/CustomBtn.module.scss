@@ -1,0 +1,39 @@
+.customBtn {
+	padding: 10px 20px;
+
+	border-radius: 5px;
+}
+.greenBigBtn {
+	background-color: #c7f19e;
+	font-size: 16px;
+	&:hover {
+		background-color: #96d656;
+	}
+}
+.yelowSmallBtn {
+	padding: 5px 15px;
+	border-radius: 5px;
+	background-color: #e3e58f;
+	font-size: 12px;
+	&:hover {
+		background-color: #f7fa6c;
+	}
+}
+.redSmallBtn {
+	padding: 5px 15px;
+	border-radius: 5px;
+	font-size: 12px;
+	background-color: #f9acac;
+	&:hover {
+		background-color: #f15f5f;
+	}
+}
+
+// .editBtn {
+//     padding: 5px 15px;
+//     border-radius: 5px;
+//     background-color: #e3e58f;
+//     &:hover {
+//         background-color: #f7fa6c;
+//     }
+// }
