@@ -7,6 +7,7 @@ import { Context } from '../../../providers/TasksProviders'
 
 const Home = () => {
 	const { visiblePopUp, setVisiblePopUp } = useContext(Context)
+
 	return (
 		<div className={style.home}>
 			<PopUp></PopUp>

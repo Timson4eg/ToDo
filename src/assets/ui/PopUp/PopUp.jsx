@@ -1,42 +1,27 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Context } from '../../../providers/TasksProviders'
 import cn from 'clsx'
 
 import style from './PopUp.module.scss'
-import CustomInput from '../CustomInput/CustomInput'
-import CustomBtn from '../CustomBtn/CustomBtn'
+import Input from '../Input/Input'
+import Btn from '../Btn/Btn'
 
-import CustomTextArea from '../CustomTextArea/CustomTextArea'
+import TextArea from '../TextArea/TextArea'
+import { useUpdateTask } from '../../utils/hooks/useUpdateTask'
 
 const PopUp = () => {
-	const { tasks, setTasks, popUp, setPopUp } = useContext(Context)
-
-	const task = tasks.find(task => task.id === popUp.id)
-	const [title, setTitle] = useState(task.title)
-	const [discription, setDiscription] = useState(task.discription)
-
-	const editTask = (title, discription, tasks, setTasks) => {
-		setTasks(
-			tasks.map(task => {
-				if (task.id === popUp.id) {
-					return {
-						id: popUp.id,
-						title: title,
-						discription: discription,
-						status: false
-					}
-				} else {
-					return task
-				}
-			})
-		)
-	}
-
-	const onSubmit = () => {
-		setPopUp({ ...popUp, visible: false })
-		console.log(title, discription)
-		editTask(title, discription, tasks, setTasks)
-	}
+	const {
+		updateTask,
+		popUp,
+		setPopUp,
+		title,
+		setTitle,
+		discription,
+		setDiscription,
+		task,
+		setTask
+	} = useContext(Context)
+	console.log(setTask)
 
 	return (
 		<div
@@ -44,25 +29,22 @@ const PopUp = () => {
 			onClick={() => setPopUp({ ...popUp, visible: false })}
 		>
 			<div className={style.popUpContent} onClick={e => e.stopPropagation()}>
-				<CustomInput
-					placeholder={task.title}
+				<Input
 					name='title'
-					value={title}
-					onChange={e => setTitle(e.target.value)}
+					value={task.title}
+					onChange={e => setTask({ ...task, title: e.target.value })}
 					type='text'
 				/>
-				<CustomTextArea
-					placeholder={task.discription}
+				<TextArea
 					name='discription'
-					value={discription}
-					onChange={e => setDiscription(e.target.value)}
+					value={task.discription}
+					onChange={e => setTask({ ...task, discription: e.target.value })}
 					type='text'
-				></CustomTextArea>
+				></TextArea>
 
-				{/* <CustomBtn onClick={onSubmit} type='greenBigBtn'> */}
-				<CustomBtn onClick={onSubmit} type='greenBigBtn'>
+				<Btn onClick={updateTask} type='greenBigBtn'>
 					Save
-				</CustomBtn>
+				</Btn>
 			</div>
 		</div>
 	)

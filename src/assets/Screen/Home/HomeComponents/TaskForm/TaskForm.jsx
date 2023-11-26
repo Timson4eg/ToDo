@@ -1,49 +1,37 @@
 import React, { useContext, useState } from 'react'
 import style from './TaskForm.module.scss'
 import { Context } from '../../../../../providers/TasksProviders'
-import CustomInput from '../../../../ui/CustomInput/CustomInput'
-import CustomBtn from '../../../../ui/CustomBtn/CustomBtn'
-import CustomTextArea from '../../../../ui/CustomTextArea/CustomTextArea'
+import Input from '../../../../ui/Input/Input'
+import Btn from '../../../../ui/Btn/Btn'
+import TextArea from '../../../../ui/TextArea/TextArea'
+import { useAddTask } from '../../../../utils/hooks/useAddTask'
 
 const TaskForm = () => {
-	// title
-	// 		discription:
-	const [title, setTitle] = useState('')
-	const [discription, setDiscription] = useState('')
-	const { tasks, setTasks } = useContext(Context)
+	// const [title, setTitle] = useState('')
+	// const [discription, setDiscription] = useState('')
 
-	const onSubmit = e => {
-		e.preventDefault()
-		const newTask = {
-			id: Date.now(),
-			title,
-			discription,
-			status: false
-		}
-		setTasks([...tasks, newTask])
-		setTitle('')
-		setDiscription('')
-	}
+	const { addTask, task, setTask } = useAddTask()
+
 	return (
 		<form className={style.createform}>
-			<CustomInput
+			<Input
 				placeholder='Task name'
 				name='title'
-				value={title}
-				onChange={e => setTitle(e.target.value)}
+				value={task.title}
+				onChange={e => setTask({ ...task, title: e.target.value })}
 				type='text'
 			/>
 
-			<CustomTextArea
+			<TextArea
 				placeholder='Discription'
 				name='discription'
-				value={discription}
-				onChange={e => setDiscription(e.target.value)}
+				value={task.discription}
+				onChange={e => setTask({ ...task, discription: e.target.value })}
 				type='text'
 			/>
-			<CustomBtn onClick={onSubmit} type='greenBigBtn'>
+			<Btn onClick={addTask} type='greenBigBtn'>
 				Create
-			</CustomBtn>
+			</Btn>
 		</form>
 	)
 }

@@ -1,18 +1,18 @@
 import React, { useContext, useState } from 'react'
 import style from './Header.module.scss'
 import { Context } from '../../../../../../providers/TasksProviders'
-import CustomBtn from '../../../../../ui/CustomBtn/CustomBtn'
+import Btn from '../../../../../ui/Btn/Btn'
 import PopUp from '../../../../../ui/PopUp/PopUp'
+import { useRemove } from '../../../../../utils/hooks/useRemove'
 
-const HeaderTask = ({ task, key }) => {
+const HeaderTask = ({ task }) => {
 	const [checked, setChecked] = useState(false)
-	const { tasks, setTasks, popUp, setPopUp } = useContext(Context)
+	const { popUp, setPopUp } = useContext(Context)
+
+	const { removeTask } = useRemove(task.id)
+
 	const handleSubmit = () => {
 		setChecked(!checked)
-	}
-
-	const removeTask = id => {
-		setTasks(tasks.filter(task => task.id !== id))
 	}
 
 	return (
@@ -25,16 +25,16 @@ const HeaderTask = ({ task, key }) => {
 
 					{checked ? <span>complete</span> : <span>in progress</span>}
 				</div>
-				<CustomBtn
+				<Btn
 					onClick={() => setPopUp({ ...popUp, visible: true, id: task.id })}
 					type='yelowSmallBtn'
 				>
 					Edit
-				</CustomBtn>
+				</Btn>
 			</div>
-			<CustomBtn onClick={() => removeTask(task.id)} type='redSmallBtn'>
+			<Btn onClick={() => removeTask(task.id)} type='redSmallBtn'>
 				Delete
-			</CustomBtn>
+			</Btn>
 		</div>
 	)
 }
