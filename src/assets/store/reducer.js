@@ -17,13 +17,15 @@ export default function (state, action) {
 			return newState
 
 		case 'edit':
-			state[action.payload.id] = {
-				id: String(action.payload.id),
-				title: action.payload.title,
-				discription: action.payload.discription,
-				state: action.payload.state
+			return {
+				...state,
+				[action.payload.id]: {
+					id: String(action.payload.id),
+					title: action.payload.title,
+					discription: action.payload.discription,
+					state: action.payload.state
+				}
 			}
-			return state
 
 		default:
 			return state

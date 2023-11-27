@@ -1,5 +1,5 @@
 import React, { createContext, useReducer, useState } from 'react'
-import reducer from './reducer'
+import reducer from '../assets/store/reducer'
 import { useUpdateTask } from '../assets/utils/hooks/useUpdateTask'
 export const Context = createContext('')
 
