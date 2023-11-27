@@ -7,7 +7,7 @@ const Task = ({ task }) => {
 		<div className={style.task}>
 			<div className={style.wrapper}>
 				<HeaderTask task={task} />
-				<p className={style.discription}>{task.discription}</p>
+				<div className={style.discription}>{task.discription}</div>
 			</div>
 		</div>
 	)

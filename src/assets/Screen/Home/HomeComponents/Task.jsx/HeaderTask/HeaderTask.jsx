@@ -17,9 +17,8 @@ const HeaderTask = ({ task }) => {
 
 	return (
 		<div className={style.header}>
+			<h3 className={style.title}>{task.title}</h3>
 			<div>
-				<h3 className={style.title}>{task.title}</h3>
-
 				<div className={style.status}>
 					<input type='checkbox' checked={checked} onChange={handleSubmit} />
 
@@ -31,10 +30,10 @@ const HeaderTask = ({ task }) => {
 				>
 					Edit
 				</Btn>
+				<Btn onClick={() => removeTask(task.id)} type='redSmallBtn'>
+					Delete
+				</Btn>
 			</div>
-			<Btn onClick={() => removeTask(task.id)} type='redSmallBtn'>
-				Delete
-			</Btn>
 		</div>
 	)
 }
