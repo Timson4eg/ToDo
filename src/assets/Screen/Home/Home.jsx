@@ -6,13 +6,14 @@ import PopUp from '../../ui/PopUp/PopUp'
 import { Context } from '../../../providers/TasksProviders'
 
 const Home = () => {
-	const { visiblePopUp, setVisiblePopUp } = useContext(Context)
+	const { state } = useContext(Context)
 
 	return (
 		<div className={style.home}>
 			<PopUp></PopUp>
 			<TaskForm></TaskForm>
 			<TasksList />
+			<button onClick={() => console.log(state)}>agdadsg</button>
 		</div>
 	)
 }

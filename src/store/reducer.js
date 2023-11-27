@@ -14,7 +14,7 @@ export default function (state, action) {
 		case 'remove':
 			const newState = { ...state }
 			delete newState[action.payload]
-			return newState
+			return (state = { ...newState })
 
 		case 'edit':
 			return {

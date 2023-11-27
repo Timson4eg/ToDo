@@ -12,7 +12,7 @@ export const useAddTask = () => {
 		dispatch({
 			type: 'add',
 			payload: {
-				id: Number(Object.keys(state).reverse()[0]) + 1,
+				id: Number(Object.keys(state).reverse()[0]) + 1 || 1,
 				title: task.title,
 				discription: task.discription,
 				state: false

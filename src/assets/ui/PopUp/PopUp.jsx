@@ -21,7 +21,6 @@ const PopUp = () => {
 		task,
 		setTask
 	} = useContext(Context)
-	console.log(setTask)
 
 	return (
 		<div
