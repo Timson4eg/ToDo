@@ -3,13 +3,13 @@ import HeaderTask from './HeaderTask/HeaderTask.jsx'
 import { useTask } from './useTask.js'
 
 const Task = ({ id }) => {
-	const { state } = useTask()
+	const { task } = useTask(id)
 
 	return (
 		<div className={style.task}>
 			<div className={style.wrapper}>
-				<HeaderTask task={state[id]} />
-				<div className={style.description}>{state[id].description}</div>
+				<HeaderTask task={task} />
+				<div className={style.description}>{task.description}</div>
 			</div>
 		</div>
 	)

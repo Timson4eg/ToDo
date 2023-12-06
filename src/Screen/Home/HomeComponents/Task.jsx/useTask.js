@@ -1,10 +1,9 @@
 import { useContext } from 'react'
 import { Context } from '../../../../providers/TasksProviders'
 
-export const useTask = task => {
+export const useTask = id => {
 	const { state } = useContext(Context)
+	const task = state[id]
 
-	return {
-		state
-	}
+	return { task }
 }
