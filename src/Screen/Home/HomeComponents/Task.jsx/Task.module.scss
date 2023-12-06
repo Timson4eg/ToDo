@@ -1,5 +1,7 @@
 .task {
-	width: 100%;
+	// width: 100%;
+	min-width: 480px;
+	max-width: 480px;
 	border: 1px solid black;
 	border-radius: 10px;
 	margin: 10px 0px;
@@ -12,10 +14,15 @@
 		flex-direction: column;
 		text-align: left;
 
-		.discription {
+		.description {
 			color: #505050;
 			display: block;
-			min-width: 100%;
 		}
+	}
+}
+
+@media (max-width: 500px) {
+	.task {
+		min-width: 300px;
 	}
 }

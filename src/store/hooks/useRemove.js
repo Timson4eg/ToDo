@@ -1,9 +1,9 @@
 import { useContext } from 'react'
-import { Context } from '../../../providers/TasksProviders'
+import { Context } from '../../providers/TasksProviders'
 
 export const useRemove = id => {
-	const { dispatch, state } = useContext(Context)
-	const removeTask = id => {
+	const { dispatch } = useContext(Context)
+	const removeTask = () => {
 		dispatch({ type: 'remove', payload: id })
 	}
 	return { removeTask }
