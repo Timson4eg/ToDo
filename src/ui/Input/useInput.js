@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react'
 
 import { useValidateInput } from './useValidateInput'
-import { Context } from '../providers/TasksProviders'
+import { Context } from '../../providers/TasksProviders'
 
 export const useInput = (initializationValue, validations) => {
 	const [value, setValue] = useState(initializationValue)

@@ -1,5 +1,5 @@
 import { useAddTask } from '../../../../store/hooks/useAddTask'
-import { useInput } from '../../../../utils/useInput'
+import { useInput } from '../../../../ui/Input/useInput'
 
 export const useTaskForm = () => {
 	const { addTask } = useAddTask()
