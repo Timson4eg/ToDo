@@ -1,21 +1,29 @@
 import { useContext, useEffect, useState } from 'react'
 import { Context } from '../../../providers/TasksProviders'
-// updateTask,
+import { useTask } from '../../../store/hooks/useTask'
+import { useInput } from '../../../ui/Input/useInput'
+
 export const usePopUp = () => {
-	const { popUp, setPopUp, updateTask, updatedDateTask, setUpdatedDateTask } =
-		useContext(Context)
+	const { popUp, setPopUp, updateTask } = useContext(Context)
+	const { task } = useTask(popUp.id)
+	const title = useInput(task.title, { isEmpty: true })
+	const description = useInput(task.description, { isEmpty: true })
+
+	useEffect(() => {
+		title.setValue(task.title)
+		description.setValue(task.description)
+	}, [popUp])
 
 	const saveUpdatedTask = () => {
 		setPopUp({ ...popUp, visible: false })
-		updateTask()
-		setUpdatedDateTask({ title: '', description: '' })
+		updateTask(title.value, description.value)
 	}
 
 	return {
 		popUp,
 		setPopUp,
-		updatedDateTask,
-		setUpdatedDateTask,
-		saveUpdatedTask
+		saveUpdatedTask,
+		title,
+		description
 	}
 }

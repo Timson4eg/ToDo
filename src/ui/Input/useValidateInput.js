@@ -5,13 +5,7 @@ export const useValidateInput = (value, validations) => {
 	const [inputValidate, setValidate] = useState(false)
 
 	useEffect(() => {
-		for (const validation in validations) {
-			switch (validation) {
-				case 'isEmpty':
-					value ? setIsEmpty(false) : setIsEmpty(true)
-					break
-			}
-		}
+		value ? setIsEmpty(false) : setIsEmpty(true)
 	}, [value])
 
 	useEffect(() => {

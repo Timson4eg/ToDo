@@ -6,18 +6,17 @@ import { useTaskForm } from './useTaskForm'
 
 const TaskForm = () => {
 	const { handleSubmit, title, description } = useTaskForm()
-
 	return (
 		<form className={style.createForm}>
 			<Input
 				placeholder='Task name'
 				name='title'
 				value={title.value}
-				onChange={e => title.onChange(e)}
+				onChange={e => title.setValue(e.target.value)}
 				type='text'
-				onBlur={e => title.onBlur(e)}
+				onInput={() => title.onInput()}
 			/>
-			{title.isDirty && title.isEmpty && (
+			{title.isEmpty && title.isTouched && (
 				<div className={style.error}>Task name must be field</div>
 			)}
 
@@ -25,16 +24,17 @@ const TaskForm = () => {
 				placeholder='Description'
 				name='description'
 				value={description.value}
-				onChange={e => description.onChange(e)}
-				onBlur={e => description.onBlur(e)}
+				onChange={e => description.setValue(e.target.value)}
 				type='text'
+				onInput={() => description.onInput()}
 			/>
-			{description.isDirty && description.isEmpty && (
+			{description.isEmpty && description.isTouched && (
 				<div className={style.error}>Description must be field</div>
 			)}
+
 			<Button
-				onClick={e => handleSubmit(e)}
 				disabled={title.inputValidate || description.inputValidate}
+				onClick={e => handleSubmit(e)}
 				type='greenBigBtn'
 			>
 				Create

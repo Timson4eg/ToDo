@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 
-export const useUpdateTask = ({ dispatch, id, updatedDateTask }) => {
-	const updateTask = () => {
+export const useUpdateTask = ({ dispatch, id }) => {
+	const updateTask = (title, description) => {
 		dispatch({
 			type: 'edit',
 			payload: {
 				id: id,
-				title: updatedDateTask.title,
-				description: updatedDateTask.description
+				title,
+				description
 			}
 		})
 	}

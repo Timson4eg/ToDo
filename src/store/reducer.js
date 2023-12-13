@@ -14,14 +14,13 @@ export default function (state, action) {
 		case 'remove':
 			const newState = { ...state }
 			delete newState[action.payload]
-			return { ...newState }
+			return newState //
 
 		case 'edit':
 			return {
 				...state,
 				[action.payload.id]: {
 					...state[action.payload.id],
-					id: String(action.payload.id),
 					title: action.payload.title,
 					description: action.payload.description
 				}

@@ -5,14 +5,15 @@ import { Context } from '../../providers/TasksProviders'
 
 export const useInput = (initializationValue, validations) => {
 	const [value, setValue] = useState(initializationValue)
-	const [isDirty, setIsDirty] = useState(false)
+	const [isTouched, setTouched] = useState(false)
 	const valid = useValidateInput(value, validations)
 
 	const onChange = e => {
 		setValue(e.target.value)
 	}
-	const onBlur = e => {
-		setIsDirty(true)
+
+	const onInput = e => {
+		setTouched(true)
 	}
-	return { value, onChange, onBlur, isDirty, ...valid, setValue, setIsDirty }
+	return { value, onChange, onInput, isTouched, ...valid, setValue, setTouched }
 }

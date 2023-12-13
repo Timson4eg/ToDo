@@ -1,10 +1,18 @@
 import style from './Header.module.scss'
 import Button from '../../../../../ui/Button/Button'
-import { useHeaderTask } from './useHeaderTask'
+import { useContext } from 'react'
+import { Context } from '../../../../../providers/TasksProviders'
+import { useRemove } from '../../../../../store/hooks/useRemove'
+import { useUpdateStatusTask } from '../../../../../store/hooks/useUpdateStatusTask'
 
-const HeaderTask = ({ task }) => {
-	const { handleSubmit, removeTask, popUp, setPopUp } = useHeaderTask(task)
+const TaskHeader = ({ task }) => {
+	const { updateStatusTask } = useUpdateStatusTask(task.id)
+	const { removeTask } = useRemove(task.id)
+	const { setPopUp } = useContext(Context)
 
+	const handleSubmit = () => {
+		updateStatusTask()
+	}
 	return (
 		<div className={style.header}>
 			<h3 className={style.title}>{task.title}</h3>
@@ -19,7 +27,7 @@ const HeaderTask = ({ task }) => {
 					{task.status ? <span>complete</span> : <span>in progress</span>}
 				</div>
 				<Button
-					onClick={() => setPopUp({ ...popUp, visible: true, id: task.id })}
+					onClick={() => setPopUp({ visible: true, id: task.id })}
 					type='yellowSmallBtn'
 				>
 					Edit
@@ -32,4 +40,4 @@ const HeaderTask = ({ task }) => {
 	)
 }
 
-export default HeaderTask
+export default TaskHeader

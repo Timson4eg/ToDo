@@ -6,13 +6,7 @@ import TextArea from '../../../ui/TextArea/TextArea'
 import { usePopUp } from './usePopUp'
 
 const PopUp = () => {
-	const {
-		popUp,
-		setPopUp,
-		updatedDateTask,
-		setUpdatedDateTask,
-		saveUpdatedTask
-	} = usePopUp()
+	const { popUp, setPopUp, saveUpdatedTask, title, description } = usePopUp()
 
 	return (
 		<div
@@ -22,26 +16,34 @@ const PopUp = () => {
 			<div className={style.popUpContent} onClick={e => e.stopPropagation()}>
 				<Input
 					name='title'
-					value={updatedDateTask.title}
-					onChange={e =>
-						setUpdatedDateTask({ ...updatedDateTask, title: e.target.value })
-					}
+					value={title.value}
+					onChange={e => title.setValue(e.target.value)}
+					onInput={() => title.onInput()}
 					type='text'
 				/>
+				{title.isEmpty && title.isTouched && (
+					<div className={style.error}>Task name must be field</div>
+				)}
+
 				<TextArea
 					name='description'
-					value={updatedDateTask.description}
-					onChange={e =>
-						setUpdatedDateTask({
-							...updatedDateTask,
-							description: e.target.value
-						})
-					}
+					value={description.value}
+					onChange={e => description.setValue(e.target.value)}
 					type='text'
+					onInput={() => description.onInput()}
 				></TextArea>
+				{description.isEmpty && description.isTouched && (
+					<div className={style.error}>Task name must be field</div>
+				)}
 				<input />
 
-				<Button onClick={saveUpdatedTask} type='greenBigBtn'>
+				<Button
+					disabled={title.inputValidate || description.inputValidate}
+					onClick={() => {
+						saveUpdatedTask(title, description)
+					}}
+					type='greenBigBtn'
+				>
 					Save
 				</Button>
 			</div>

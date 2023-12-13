@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { Context } from '../../../../providers/TasksProviders'
+import { Context } from '../../providers/TasksProviders'
 
 export const useTask = id => {
 	const { state } = useContext(Context)

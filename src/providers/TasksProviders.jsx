@@ -27,28 +27,14 @@ const TasksProviders = ({ children }) => {
 	}
 	const [state, dispatch] = useReducer(reducer, tasks)
 	const [checked, setChecked] = useState(false)
+
 	const [popUp, setPopUp] = useState({ visible: false, id: '1' })
 	const [error, setError] = useState(false)
-
-	const [task, setTask] = useState({ title: '', setTitle: '' })
-	const [updatedDateTask, setUpdatedDateTask] = useState({
-		title: '',
-		description: ''
-	})
-
-	useEffect(() => {
-		setUpdatedDateTask({
-			title: state[popUp.id].title,
-			description: state[popUp.id].description
-		})
-	}, [popUp.id])
 
 	const { updateTask } = useUpdateTask({
 		state,
 		dispatch,
-		id: popUp.id,
-		updatedDateTask,
-		setUpdatedDateTask
+		id: popUp.id
 	})
 
 	return (
@@ -59,12 +45,8 @@ const TasksProviders = ({ children }) => {
 				popUp,
 				setPopUp,
 				updateTask,
-				task,
-				setTask,
 				checked,
 				setChecked,
-				updatedDateTask,
-				setUpdatedDateTask,
 				error,
 				setError
 			}}
