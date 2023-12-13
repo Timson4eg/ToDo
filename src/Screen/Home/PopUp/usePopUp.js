@@ -6,8 +6,8 @@ import { useInput } from '../../../ui/Input/useInput'
 export const usePopUp = () => {
 	const { popUp, setPopUp, updateTask } = useContext(Context)
 	const { task } = useTask(popUp.id)
-	const title = useInput(task.title, { isEmpty: true })
-	const description = useInput(task.description, { isEmpty: true })
+	const title = useInput('', { isEmpty: true })
+	const description = useInput('', { isEmpty: true })
 
 	useEffect(() => {
 		title.setValue(task.title)
