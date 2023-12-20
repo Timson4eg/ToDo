@@ -1,15 +1,13 @@
 import style from './Task.module.scss'
-import TaskHeader from './HeaderTask/TaskHeader.jsx'
-import { useTask } from '../../../../store/hooks/useTask.js'
+import TaskHeader from './TaskHeader/TaskHeader.jsx'
+import TaskDescription from './TaskDescription/TaskDescription.jsx'
 
 const Task = ({ id }) => {
-	const { task } = useTask(id)
-
 	return (
 		<div className={style.task}>
 			<div className={style.wrapper}>
-				<TaskHeader task={task} />
-				<div className={style.description}>{task.description}</div>
+				<TaskHeader id={id} />
+				<TaskDescription id={id}></TaskDescription>
 			</div>
 		</div>
 	)

@@ -4,10 +4,11 @@ import Input from '../../../ui/Input/Input'
 import Button from '../../../ui/Button/Button'
 import TextArea from '../../../ui/TextArea/TextArea'
 import { usePopUp } from './usePopUp'
+import { useEffect } from 'react'
 
 const PopUp = () => {
 	const { popUp, setPopUp, saveUpdatedTask, title, description } = usePopUp()
-
+	// console.log(popUp.id)
 	return (
 		<div
 			className={cn(style.popUp, { [style.active]: popUp.visible })}
@@ -38,9 +39,8 @@ const PopUp = () => {
 				<input />
 
 				<Button
-					disabled={title.inputValidate || description.inputValidate}
 					onClick={() => {
-						saveUpdatedTask(title, description)
+						saveUpdatedTask(popUp.id, title, description)
 					}}
 					type='greenBigBtn'
 				>

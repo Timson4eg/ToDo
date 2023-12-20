@@ -2,10 +2,10 @@ import { useContext } from 'react'
 
 import { Context } from '../../providers/TasksProviders'
 
-export const useUpdateStatusTask = id => {
+export const useUpdateStatusTask = () => {
 	const { state, dispatch } = useContext(Context)
 
-	const updateStatusTask = () => {
+	const updateStatusTask = id => {
 		dispatch({
 			type: 'changeStatus',
 			payload: {

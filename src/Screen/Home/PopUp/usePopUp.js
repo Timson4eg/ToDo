@@ -1,11 +1,15 @@
 import { useContext, useEffect, useState } from 'react'
-import { Context } from '../../../providers/TasksProviders'
 import { useTask } from '../../../store/hooks/useTask'
 import { useInput } from '../../../ui/Input/useInput'
+import { useUpdateTask } from '../../../store/hooks/useUpdateTask'
+import { InterfaceContext } from '../../../providers/HiddenInterfaceProviders'
 
 export const usePopUp = () => {
-	const { popUp, setPopUp, updateTask } = useContext(Context)
+	const { popUp, setPopUp } = useContext(InterfaceContext)
+
 	const { task } = useTask(popUp.id)
+	const { updateTask } = useUpdateTask(popUp.id)
+
 	const title = useInput('', { isEmpty: true })
 	const description = useInput('', { isEmpty: true })
 
@@ -14,16 +18,13 @@ export const usePopUp = () => {
 		description.setValue(task.description)
 	}, [popUp])
 
-	const saveUpdatedTask = () => {
+	const saveUpdatedTask = id => {
+		if (title.value === '' || description.value === '') {
+			return
+		}
 		setPopUp({ ...popUp, visible: false })
-		updateTask(title.value, description.value)
+		updateTask(id, title.value, description.value)
 	}
 
-	return {
-		popUp,
-		setPopUp,
-		saveUpdatedTask,
-		title,
-		description
-	}
+	return { popUp, setPopUp, saveUpdatedTask, title, description }
 }

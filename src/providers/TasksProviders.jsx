@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useReducer, useState } from 'react'
 import reducer from '../store/reducer'
-import { useUpdateTask } from '../store/hooks/useUpdateTask'
+
 export const Context = createContext('')
 
 const TasksProviders = ({ children }) => {
@@ -27,24 +27,13 @@ const TasksProviders = ({ children }) => {
 	}
 	const [state, dispatch] = useReducer(reducer, tasks)
 	const [checked, setChecked] = useState(false)
-
-	const [popUp, setPopUp] = useState({ visible: false, id: '1' })
 	const [error, setError] = useState(false)
-
-	const { updateTask } = useUpdateTask({
-		state,
-		dispatch,
-		id: popUp.id
-	})
 
 	return (
 		<Context.Provider
 			value={{
 				state,
 				dispatch,
-				popUp,
-				setPopUp,
-				updateTask,
 				checked,
 				setChecked,
 				error,

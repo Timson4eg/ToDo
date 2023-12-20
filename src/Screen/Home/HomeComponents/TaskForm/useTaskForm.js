@@ -10,6 +10,11 @@ export const useTaskForm = () => {
 
 	const handleSubmit = e => {
 		e.preventDefault()
+		if (title.value === '' || description.value === '') {
+			title.setTouched(true)
+			description.setTouched(true)
+			return
+		}
 		addTask(title.value, description.value)
 		title.setValue('')
 		description.setValue('')

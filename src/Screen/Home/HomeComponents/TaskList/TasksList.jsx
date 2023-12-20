@@ -1,6 +1,6 @@
 import style from './TasksList.module.scss'
-import Task from './Task.jsx/Task'
-import { useTasks } from '../../../hooks/useTasks'
+import Task from '../Task.jsx/Task'
+import { useTasks } from '../../../../hooks/useTasks'
 
 const TasksList = () => {
 	const { ids } = useTasks()

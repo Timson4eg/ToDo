@@ -12,9 +12,8 @@ const TaskForm = () => {
 				placeholder='Task name'
 				name='title'
 				value={title.value}
-				onChange={e => title.setValue(e.target.value)}
+				onChange={e => title.onChange(e)}
 				type='text'
-				onInput={() => title.onInput()}
 			/>
 			{title.isEmpty && title.isTouched && (
 				<div className={style.error}>Task name must be field</div>
@@ -24,19 +23,14 @@ const TaskForm = () => {
 				placeholder='Description'
 				name='description'
 				value={description.value}
-				onChange={e => description.setValue(e.target.value)}
+				onChange={e => description.onChange(e)}
 				type='text'
-				onInput={() => description.onInput()}
 			/>
 			{description.isEmpty && description.isTouched && (
 				<div className={style.error}>Description must be field</div>
 			)}
 
-			<Button
-				disabled={title.inputValidate || description.inputValidate}
-				onClick={e => handleSubmit(e)}
-				type='greenBigBtn'
-			>
+			<Button onClick={e => handleSubmit(e)} type='greenBigBtn'>
 				Create
 			</Button>
 		</form>

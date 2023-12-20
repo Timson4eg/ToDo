@@ -10,6 +10,7 @@ export const useInput = (initializationValue, validations) => {
 
 	const onChange = e => {
 		setValue(e.target.value)
+		setTouched(true)
 	}
 
 	const onInput = e => {

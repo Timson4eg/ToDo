@@ -1,11 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useContext } from 'react'
+import { Context } from '../../providers/TasksProviders'
+import { InterfaceContext } from '../../providers/HiddenInterfaceProviders'
 
-export const useUpdateTask = ({ dispatch, id }) => {
-	const updateTask = (title, description) => {
+export const useUpdateTask = () => {
+	const { dispatch } = useContext(Context)
+
+	const updateTask = (id, title, description) => {
 		dispatch({
 			type: 'edit',
 			payload: {
-				id: id,
+				id,
 				title,
 				description
 			}
