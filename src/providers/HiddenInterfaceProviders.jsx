@@ -1,9 +1,14 @@
-import { createContext, useState } from 'react'
+import { createContext, useContext, useState } from 'react'
+import { Context } from './TasksProviders'
 
 export const InterfaceContext = createContext('')
 
 const HiddenInterfaceProviders = ({ children }) => {
-	const [popUp, setPopUp] = useState({ visible: false, id: 1 })
+	const { state } = useContext(Context)
+	const [popUp, setPopUp] = useState({
+		visible: false,
+		id: Object.keys(state)[0]
+	})
 	return (
 		<InterfaceContext.Provider value={{ popUp, setPopUp }}>
 			{children}

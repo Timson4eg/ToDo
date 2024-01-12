@@ -2,10 +2,10 @@ import { useContext } from 'react'
 import { Context } from '../../providers/TasksProviders'
 import { InterfaceContext } from '../../providers/HiddenInterfaceProviders'
 
-export const useUpdateTask = () => {
+export const useUpdateTask = id => {
 	const { dispatch } = useContext(Context)
 
-	const updateTask = (id, title, description) => {
+	const updateTask = (title, description) => {
 		dispatch({
 			type: 'edit',
 			payload: {

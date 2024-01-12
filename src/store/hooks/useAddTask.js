@@ -10,6 +10,7 @@ export const useAddTask = () => {
 			type: 'add',
 			payload: {
 				//добавляю  id в task на 1 больше от последнего  task.id если нету задаач присваиваю 1
+				// id: Number(Object.keys(state).reverse()[0]) + 1 || 1,
 				id: Number(Object.keys(state).at(-1)) + 1 || 1,
 				title,
 				description,

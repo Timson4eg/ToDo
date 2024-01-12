@@ -14,7 +14,7 @@ const TaskHeader = ({ id }) => {
 					<input
 						type='checkbox'
 						checked={task.status}
-						onChange={() => updateStatusTask(id)}
+						onChange={() => updateStatusTask()}
 					/>
 
 					{task.status ? <span>complete</span> : <span>in progress</span>}

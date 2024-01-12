@@ -12,7 +12,8 @@ const Home = () => {
 	}
 	return (
 		<div className={style.home}>
-			<PopUp />
+			{state && <PopUp />}
+
 			<TaskForm />
 			<TasksList />
 			<button onClick={chek}>qqqYopta</button>

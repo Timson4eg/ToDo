@@ -8,7 +8,7 @@ import { useEffect } from 'react'
 
 const PopUp = () => {
 	const { popUp, setPopUp, saveUpdatedTask, title, description } = usePopUp()
-	// console.log(popUp.id)
+
 	return (
 		<div
 			className={cn(style.popUp, { [style.active]: popUp.visible })}
@@ -19,7 +19,6 @@ const PopUp = () => {
 					name='title'
 					value={title.value}
 					onChange={e => title.setValue(e.target.value)}
-					onInput={() => title.onInput()}
 					type='text'
 				/>
 				{title.isEmpty && title.isTouched && (
@@ -31,7 +30,6 @@ const PopUp = () => {
 					value={description.value}
 					onChange={e => description.setValue(e.target.value)}
 					type='text'
-					onInput={() => description.onInput()}
 				></TextArea>
 				{description.isEmpty && description.isTouched && (
 					<div className={style.error}>Task name must be field</div>

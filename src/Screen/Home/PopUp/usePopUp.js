@@ -14,8 +14,8 @@ export const usePopUp = () => {
 	const description = useInput('', { isEmpty: true })
 
 	useEffect(() => {
-		title.setValue(task.title)
-		description.setValue(task.description)
+		title.setValue(task?.title)
+		description.setValue(task?.description)
 	}, [popUp])
 
 	const saveUpdatedTask = id => {
@@ -23,7 +23,7 @@ export const usePopUp = () => {
 			return
 		}
 		setPopUp({ ...popUp, visible: false })
-		updateTask(id, title.value, description.value)
+		updateTask(title.value, description.value)
 	}
 
 	return { popUp, setPopUp, saveUpdatedTask, title, description }
