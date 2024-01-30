@@ -20,6 +20,8 @@ export const usePopUp = () => {
 
 	const saveUpdatedTask = id => {
 		if (title.value === '' || description.value === '') {
+			title.setTouched(true)
+			description.setTouched(true)
 			return
 		}
 		setPopUp({ ...popUp, visible: false })

@@ -1,18 +1,18 @@
 import { useRemove } from '../../../../../store/hooks/useRemove'
-import { useUpdateStatusTask } from '../../../../../store/hooks/useUpdateStatusTask'
+import { useToggleStatusTask } from '../../../../../store/hooks/useToggleStatusTask'
 import { useTask } from '../../../../../store/hooks/useTask'
 import { usePopUp } from '../../../PopUp/usePopUp'
 
 export const useTaskHeader = id => {
 	const { task } = useTask(id)
 	const { setPopUp } = usePopUp()
-	const { updateStatusTask } = useUpdateStatusTask(task.id)
+	const { toggleStatusTask } = useToggleStatusTask(task.id)
 	const { removeTask } = useRemove(task.id)
 
 	return {
 		task,
 		setPopUp,
-		updateStatusTask,
+		toggleStatusTask,
 		removeTask
 	}
 }

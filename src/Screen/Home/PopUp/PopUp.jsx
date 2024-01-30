@@ -4,7 +4,6 @@ import Input from '../../../ui/Input/Input'
 import Button from '../../../ui/Button/Button'
 import TextArea from '../../../ui/TextArea/TextArea'
 import { usePopUp } from './usePopUp'
-import { useEffect } from 'react'
 
 const PopUp = () => {
 	const { popUp, setPopUp, saveUpdatedTask, title, description } = usePopUp()

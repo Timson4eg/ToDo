@@ -1,6 +1,5 @@
 import { useContext } from 'react'
 import { Context } from '../../providers/TasksProviders'
-import { InterfaceContext } from '../../providers/HiddenInterfaceProviders'
 
 export const useUpdateTask = id => {
 	const { dispatch } = useContext(Context)

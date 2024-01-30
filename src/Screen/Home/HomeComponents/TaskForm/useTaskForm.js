@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { useAddTask } from '../../../../store/hooks/useAddTask'
 import { useInput } from '../../../../ui/Input/useInput'
 
@@ -15,6 +14,7 @@ export const useTaskForm = () => {
 			description.setTouched(true)
 			return
 		}
+
 		addTask(title.value, description.value)
 		title.setValue('')
 		description.setValue('')

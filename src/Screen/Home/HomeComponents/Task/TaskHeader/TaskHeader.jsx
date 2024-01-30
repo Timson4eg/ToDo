@@ -4,7 +4,7 @@ import Button from '../../../../../ui/Button/Button'
 import { useTaskHeader } from './useTaskHeader'
 
 const TaskHeader = ({ id }) => {
-	const { task, setPopUp, updateStatusTask, removeTask } = useTaskHeader(id)
+	const { task, setPopUp, toggleStatusTask, removeTask } = useTaskHeader(id)
 
 	return (
 		<div className={style.header}>
@@ -14,7 +14,7 @@ const TaskHeader = ({ id }) => {
 					<input
 						type='checkbox'
 						checked={task.status}
-						onChange={() => updateStatusTask()}
+						onChange={() => toggleStatusTask()}
 					/>
 
 					{task.status ? <span>complete</span> : <span>in progress</span>}
