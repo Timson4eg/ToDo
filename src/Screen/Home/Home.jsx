@@ -7,16 +7,12 @@ import { Context } from '../../providers/TasksProviders'
 
 const Home = () => {
 	const { state } = useContext(Context)
-	const chek = () => {
-		console.log(state)
-	}
+
 	return (
 		<div className={style.home}>
-			{state && <PopUp />}
-
+			<PopUp />
 			<TaskForm />
 			<TasksList />
-			<button onClick={chek}>qqqYopta</button>
 		</div>
 	)
 }

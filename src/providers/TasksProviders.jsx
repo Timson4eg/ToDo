@@ -23,8 +23,15 @@ const TasksProviders = ({ children }) => {
 			title: 'new Component',
 			description: ' create new Component and logic',
 			status: false
+		},
+		5: {
+			id: '3',
+			title: 'new Component',
+			description: ' create new Component and logic',
+			status: false
 		}
 	}
+	const [lastKey, setLastKey] = useState(6)
 	const [state, dispatch] = useReducer(reducer, tasks)
 	const [checked, setChecked] = useState(false)
 	const [error, setError] = useState(false)
@@ -37,7 +44,9 @@ const TasksProviders = ({ children }) => {
 				checked,
 				setChecked,
 				error,
-				setError
+				setError,
+				lastKey,
+				setLastKey
 			}}
 		>
 			{children}
